@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const consign = require('consign');
-const { v4: uuidv4, v4: isUuid } = require('uuid');
 
 module.exports = () => {
 const app = express();

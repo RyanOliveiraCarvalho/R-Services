@@ -1,3 +1,5 @@
+const { v4: uuidv4, v4: isUuid } = require('uuid');
+const Produtos = require('../Models/Produtos');
 
 module.exports = app => {
 
@@ -36,12 +38,11 @@ module.exports = app => {
   });
 
   app.post("/store", (request, response) => {
-    const { nome, marca, peso, preco, desc } = request.body;
-    // console.log(body)
+    const produto = request.body;
+    
+    Produtos.adicionar(produto);
 
-    const product = { id: uuidv4(), nome, marca, peso, preco, desc };
-    store.push(product);
-    return response.json(product);
+    return response.json(produto);
   });
 
   app.put("/store/:id", validateProductId, (request, response) => {
